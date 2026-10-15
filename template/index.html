@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Welcome to MyWebsite, your destination for modern digital solutions.">
+
+    <title>MyWebsite | Home</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="/" class="logo">MyWebsite<span>.</span></a>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact" class="nav-button">Contact Us</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section class="hero">
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <p class="tagline">WELCOME TO MY WEBSITE</p>
+
+                    <h1>
+                        Build Your Digital
+                        <span>Future Today.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Discover modern digital solutions with a
+                        beautiful design, responsive layout, and
+                        user-friendly experience.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#services" class="button primary-button">
+                            Explore Services
+                        </a>
+
+                        <a href="/about" class="button secondary-button">
+                            Learn More
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="hero-card">
+                    <div class="card-icon">🚀</div>
+
+                    <h2>Ideas to Reality</h2>
+
+                    <p>
+                        Turn your ideas into a modern online
+                        experience with our digital solutions.
+                    </p>
+
+                    <div class="card-stats">
+                        <div>
+                            <h3>100%</h3>
+                            <p>Responsive</p>
+                        </div>
+
+                        <div>
+                            <h3>24/7</h3>
+                            <p>Online Ready</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="tagline">WHAT WE OFFER</p>
+                    <h2>Our Services</h2>
+
+                    <p>
+                        Explore the services available on our platform.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+
+                    <article class="service-card">
+                        <div class="service-icon">💻</div>
+
+                        <h3>Web Development</h3>
+
+                        <p>
+                            Build modern websites using HTML,
+                            CSS, and Python.
+                        </p>
+
+                        <a href="#contact">Get Started →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">🎨</div>
+
+                        <h3>Web Design</h3>
+
+                        <p>
+                            Create attractive layouts with
+                            clean colors and professional styling.
+                        </p>
+
+                        <a href="#contact">Get Started →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">📱</div>
+
+                        <h3>Responsive Design</h3>
+
+                        <p>
+                            Make your website work across
+                            mobile phones, tablets, and computers.
+                        </p>
+
+                        <a href="#contact">Get Started →</a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section class="about-section">
+
+            <div class="container about-content">
+
+                <div>
+                    <p class="tagline">ABOUT OUR WEBSITE</p>
+
+                    <h2>A Simple Idea Can Become Something Great.</h2>
+                </div>
+
+                <div>
+                    <p>
+                        MyWebsite is a demonstration project created
+                        using HTML, CSS, and Python Flask.
+
+                        It provides a starting point for building
+                        your own website and learning web development.
+                    </p>
+
+                    <a href="/about" class="button primary-button">
+                        About Us
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="tagline">GET IN TOUCH</p>
+                    <h2>Contact Us</h2>
+
+                    <p>
+                        Have a question? Send us a message.
+                    </p>
+                </div>
+
+                <div class="contact-box">
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert {{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <form action="/contact" method="POST">
+
+                        <label for="name">Your Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            maxlength="100"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <label for="email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            maxlength="254"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <label for="message">Your Message</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            maxlength="3000"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                        <button type="submit"
+                                class="button primary-button">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <a href="/" class="logo footer-logo">
+                MyWebsite<span>.</span>
+            </a>
+
+            <p>
+                © 2026 MyWebsite. All rights reserved.
+            </p>
+
+            <a href="/about">About Us</a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
